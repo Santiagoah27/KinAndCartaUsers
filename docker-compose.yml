@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+mysql:
+    image: mysql:latest
+    restart: always
+    container_name: dbmysql
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: users-kin
+    ports:
+       - 33060:3306
+
+mongo:
+    image: mongo:latest
+    restart: always
+    container_name: dbmongo
+    volumes:
+      - mongo-data:/var/lib/mongo
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MYSQL_DATABASE: password
+      ports:
+       - 27018:27017
+postgres:
+    image: posgres:latest
+    restart: always
+    container_name: dbpostgres
+    volumes:
+      - mongo-data:/var/lib/postgres
+    environment: 
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      ports:
+       - 54320:5432
+
+volumes:
+   mysql-data:
+   mongo-data:
+   postgres-data:
+  
+   
+
