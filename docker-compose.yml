@@ -24,7 +24,7 @@ mongo:
       ports:
        - 27018:27017
 postgres:
-    image: posgres:latest
+    image: postgres:latest
     restart: always
     container_name: dbpostgres
     volumes:
