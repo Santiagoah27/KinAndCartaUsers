@@ -8,14 +8,14 @@ const Grid = ({resultAPI}) => {
 
     const rowData = resultAPI
     const [columnDefs, setColumnDefs] = useState([
-      {field: 'employeeId'},
-      {field: 'firstName'},
-      {field: 'lastName'},
-      {field: 'age'},
-      {field: 'address'},
-      {field: 'email'},
-      {field: 'city'},
-      {field: 'timeWorkingInCompany'}
+      {field: 'employeeId', headerName: 'Identificación'},
+      {field: 'firstName', headerName: 'Nombre'},
+      {field: 'lastName', headerName: 'Apellido'},
+      {field: 'age', headerName: 'Edad'},
+      {field: 'address', headerName: 'Dirección'},
+      {field: 'email', headerName: 'Email'},
+      {field: 'city', headerName: 'Ciudad'},
+      {field: 'timeWorkingInCompany', headerName: 'Antigüedad'}
     ])
   
     const defaultColDef = useMemo(() => ({
@@ -24,7 +24,7 @@ const Grid = ({resultAPI}) => {
     }), [])  
   
     return (
-      <div className='ag-theme-alpine-dark' style={{height: 400, width: 1600, marginLeft: 150, marginTop: 40}}>
+      <div className='ag-theme-alpine-dark' style={{height: 400, width: 1600, marginLeft: 70, marginTop: 40}}>
       <AgGridReact
          rowData={rowData}
          columnDefs={columnDefs}

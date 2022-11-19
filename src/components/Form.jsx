@@ -52,13 +52,14 @@ const Form = ({setSearchUserId}) => {
         }
         setError(false)
         setSearchUserId({
-            continent
+            continent,
+            id
         })
     }
 
   return (
     <>
-    {error && <Error>Es necesario el continente</Error>}
+    {error && <Error>Es necesario el continente o el Id del usuario</Error>}
      <form
         onSubmit={handleSubmit}
      >

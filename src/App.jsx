@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import styled from "@emotion/styled"
 import Form from "./components/Form"
 import UsersImage from './img/Users.png'
+import Error from "./components/Error"
 
 const Container = styled.div`
   max-width: 1000px;
@@ -50,8 +51,13 @@ function App() {
   useEffect(() => {
     const consultAPI = async () => {
       if(Object.keys(searchUserId).length > 0){
-        const { continent } = searchUserId
-        const url = `https://localhost:7192/api/users/${continent}`
+        const { continent, id } = searchUserId
+        var url = ""
+        if(id == ""){
+          url = `${import.meta.env.VITE_API_URL}/${continent}`
+        } else {
+          url = `${import.meta.env.VITE_API_URL}/${continent}/${id}`
+        }
         const response = await fetch(url)
         const result = await response.json()
         setResultAPI(result)
@@ -74,8 +80,7 @@ function App() {
          />
       </div>
     </Container>
-    <Grid resultAPI={resultAPI}/>
-
+      <Grid resultAPI={resultAPI}/>
     </>
   )
 }
